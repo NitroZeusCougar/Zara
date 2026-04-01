@@ -25,34 +25,34 @@ public class PriceJpaEntity {
     private Long id;
 
     /** Foreign key of the brand group (e.g. 1 = ZARA). */
-    @Column(name = "BRAND_ID", nullable = false)
+    @Column(name = "brand_id", nullable = false)
     private Long brandId;
 
     /** Start of the date range in which this price applies. */
-    @Column(name = "START_DATE", nullable = false)
+    @Column(name = "start_date", nullable = false)
     private LocalDateTime startDate;
 
     /** End of the date range in which this price applies. */
-    @Column(name = "END_DATE", nullable = false)
+    @Column(name = "end_date", nullable = false)
     private LocalDateTime endDate;
 
     /** Price tariff identifier. */
-    @Column(name = "PRICE_LIST", nullable = false)
+    @Column(name = "price_list", nullable = false)
     private Long priceList;
 
     /** Product identifier. */
-    @Column(name = "PRODUCT_ID", nullable = false)
+    @Column(name = "product_id", nullable = false)
     private Long productId;
 
     /** Priority used to disambiguate overlapping tariffs. */
-    @Column(name = "PRIORITY", nullable = false)
+    @Column(name = "priority", nullable = false)
     private int priority;
 
     /** Final sale price. */
-    @Column(name = "PRICE", nullable = false, precision = 10, scale = 2)
+    @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
     /** ISO currency code (e.g. "EUR"). */
-    @Column(name = "CURR", nullable = false, length = 3)
+    @Column(name = "currency", nullable = false, length = 3)
     private String currency;
 }

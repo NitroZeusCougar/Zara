@@ -1,13 +1,10 @@
 package com.zara.prices.infrastructure.db.adapter;
 
 import com.zara.prices.domain.model.Price;
-import com.zara.prices.infrastructure.db.mapper.PriceJpaMapperImpl;
-import com.zara.prices.infrastructure.db.repository.PriceJpaRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.Import;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,22 +16,12 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Uses a real H2 database loaded with schema.sql + data.sql.
  * No mocks — validates the full JPA query and mapping pipeline.
  */
-@DataJpaTest
-@Import(PriceJpaMapperImpl.class)
+@SpringBootTest
+@Transactional
 class PriceJpaAdapterTest {
 
     @Autowired
-    private PriceJpaRepository jpaRepository;
-
-    @Autowired
-    private PriceJpaMapperImpl mapper;
-
     private PriceJpaAdapter adapter;
-
-    @BeforeEach
-    void setUp() {
-        adapter = new PriceJpaAdapter(jpaRepository, mapper);
-    }
 
     @Test
     void shouldReturnOneCandidate_whenDateMatchesOnlyOneTariff() {
